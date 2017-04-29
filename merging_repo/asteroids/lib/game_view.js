@@ -7,6 +7,7 @@ function GameView(ctx) {
 }
 
 GameView.prototype.bindKeyHandlers = function(){
+  key('space', () => this.game.ship.fireBullet());
   key('a', () => this.game.ship.power([-1,0]));
   key('d', () => this.game.ship.power([1, 0]));
   key('w', () => this.game.ship.power([0,-1]));

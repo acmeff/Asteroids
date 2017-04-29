@@ -95,6 +95,7 @@ function GameView(ctx) {
 }
 
 GameView.prototype.bindKeyHandlers = function(){
+  key('space', () => this.game.ship.fireBullet());
   key('a', () => this.game.ship.power([-1,0]));
   key('d', () => this.game.ship.power([1, 0]));
   key('w', () => this.game.ship.power([0,-1]));
@@ -328,7 +329,10 @@ Ship.prototype.relocate = function() {
 
 Ship.prototype.fireBullet = function() {
   let bullet = new Bullet({pos: [this.x, this.y], vel: [this.vx*5, this.vy*5]});
-  this.game.bullets.push(bullet);
+  // this.game.bullets.push(bullet);
+  console.log(this.game);
+  this.game.add(bullet);
+  // this.game.allObjects.push(bullet);
 };
 
 Ship.prototype.power = function (impulse) {
